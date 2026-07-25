@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { pricingPlans } from "@/lib/data/pricing";
 import { getSession, activateSubscription } from "@/lib/auth";
-
+import { proxyToBackend } from "@/lib/api-proxy";
 function subscriptionEndDate(planId: string): string {
   const end = new Date();
   if (planId === "monthly") {
@@ -13,8 +13,10 @@ function subscriptionEndDate(planId: string): string {
 }
 
 export async function POST(req: NextRequest) {
-  try {
-    const { planId } = await req.json();
+  const proxied = await proxyToBackend(req, "/api/checkout");
+  if (proxied) return proxied;
+
+  try {    const { planId } = await req.json();
     const plan = pricingPlans.find((p) => p.id === planId);
 
     if (!plan) {

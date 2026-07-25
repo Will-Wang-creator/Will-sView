@@ -56,6 +56,16 @@ export async function createToken(user: User): Promise<string> {
 export async function verifyToken(token: string): Promise<User | null> {
   try {
     const { payload } = await jwtVerify(token, JWT_SECRET);
+    if (process.env.API_URL?.trim()) {
+      return {
+        id: payload.id as string,
+        email: payload.email as string,
+        name: payload.name as string,
+        isSubscribed: Boolean(payload.isSubscribed),
+        subscriptionEnd: payload.subscriptionEnd as string | undefined,
+        memberSince: payload.memberSince as string,
+      };
+    }
     const user = await findUserByEmail(payload.email as string);
     if (!user) return null;
     return toPublicUser(user);

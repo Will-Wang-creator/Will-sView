@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getSession } from "@/lib/auth";
+import { proxyToBackend } from "@/lib/api-proxy";
 import {
   getUserComments,
   getUserLikes,
@@ -8,6 +9,9 @@ import {
 import { getArticle } from "@/lib/data/articles";
 
 export async function GET(req: NextRequest) {
+  const proxied = await proxyToBackend(req, "/api/members/activity");
+  if (proxied) return proxied;
+
   const user = await getSession();
   if (!user) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });

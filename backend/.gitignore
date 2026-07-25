@@ -1,0 +1,6 @@
+# NestJS API
+node_modules/
+dist/
+data/*.db
+.env
+.env.local

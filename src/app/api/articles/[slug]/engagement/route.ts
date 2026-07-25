@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getSession } from "@/lib/auth";
-import {
-  getComments,
+import { proxyToBackend } from "@/lib/api-proxy";
+import {  getComments,
   addComment,
   getLikeCount,
   isLiked,
@@ -12,10 +12,12 @@ interface RouteParams {
   params: Promise<{ slug: string }>;
 }
 
-export async function GET(_req: NextRequest, { params }: RouteParams) {
+export async function GET(req: NextRequest, { params }: RouteParams) {
   const { slug } = await params;
-  const user = await getSession();
+  const proxied = await proxyToBackend(req, `/api/articles/${slug}/engagement`);
+  if (proxied) return proxied;
 
+  const user = await getSession();
   return NextResponse.json({
     likes: await getLikeCount(slug),
     liked: await isLiked(slug, user?.id),
@@ -25,8 +27,10 @@ export async function GET(_req: NextRequest, { params }: RouteParams) {
 
 export async function POST(req: NextRequest, { params }: RouteParams) {
   const { slug } = await params;
-  const body = await req.json();
-  const user = await getSession();
+  const proxied = await proxyToBackend(req, `/api/articles/${slug}/engagement`);
+  if (proxied) return proxied;
+
+  const body = await req.json();  const user = await getSession();
 
   if (body.action === "like") {
     if (!user) {

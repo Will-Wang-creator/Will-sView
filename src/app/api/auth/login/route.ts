@@ -1,9 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { login } from "@/lib/auth";
+import { proxyToBackend } from "@/lib/api-proxy";
 
 export async function POST(req: NextRequest) {
-  try {
-    const { email, password } = await req.json();
+  const proxied = await proxyToBackend(req, "/api/auth/login");
+  if (proxied) return proxied;
+
+  try {    const { email, password } = await req.json();
 
     if (!email || !password) {
       return NextResponse.json(

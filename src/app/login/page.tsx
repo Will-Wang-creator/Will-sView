@@ -133,19 +133,7 @@ function LoginForm() {
         </button>
       </p>
 
-      <div className="mt-8 rounded-xl bg-[var(--surface)] p-4 text-sm text-[var(--muted)]">
-        <p className="font-medium text-[var(--foreground)]">{t.login.demoAccounts}</p>
-        <p className="mt-1">
-          {t.login.demoMember} <code className="text-xs">demo@example.com</code> /{" "}
-          <code className="text-xs">demo1234</code>
-        </p>
-        <p>
-          {t.login.demoFree} <code className="text-xs">free@example.com</code> /{" "}
-          <code className="text-xs">demo1234</code>
-        </p>
-      </div>
-
-      <p className="mt-4 text-center text-sm text-[var(--muted)]">
+      <p className="mt-8 text-center text-sm text-[var(--muted)]">
         {t.login.notMember}{" "}
         <Link href="/pricing" className="text-black underline hover:no-underline">
           {t.login.viewPricing}
