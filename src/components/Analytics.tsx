@@ -1,4 +1,5 @@
 import Script from "next/script";
+import { Analytics as VercelAnalytics } from "@vercel/analytics/next";
 
 export function GoogleAnalytics() {
   const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID;
@@ -41,6 +42,7 @@ export function Analytics() {
     <>
       <GoogleAnalytics />
       <CloudflareInsights />
+      <VercelAnalytics />
     </>
   );
 }
