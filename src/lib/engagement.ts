@@ -1,4 +1,4 @@
-import { getDb } from "@/lib/db";
+import { dbQueryAll, dbQueryOne, dbRun } from "@/lib/db";
 
 export interface Comment {
   id: string;
@@ -16,8 +16,7 @@ export interface UserActivityItem {
 }
 
 export async function initEngagementSchema(): Promise<void> {
-  const database = await getDb();
-  database.run(`
+  await dbRun(`
     CREATE TABLE IF NOT EXISTS article_likes (
       user_id TEXT NOT NULL,
       slug TEXT NOT NULL,
@@ -25,7 +24,7 @@ export async function initEngagementSchema(): Promise<void> {
       PRIMARY KEY (user_id, slug)
     )
   `);
-  database.run(`
+  await dbRun(`
     CREATE TABLE IF NOT EXISTS article_comments (
       id TEXT PRIMARY KEY,
       slug TEXT NOT NULL,
@@ -35,7 +34,7 @@ export async function initEngagementSchema(): Promise<void> {
       created_at TEXT NOT NULL
     )
   `);
-  database.run(`
+  await dbRun(`
     CREATE TABLE IF NOT EXISTS article_views (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       user_id TEXT NOT NULL,
@@ -43,7 +42,7 @@ export async function initEngagementSchema(): Promise<void> {
       viewed_at TEXT NOT NULL
     )
   `);
-  database.run(
+  await dbRun(
     "CREATE INDEX IF NOT EXISTS idx_article_views_user ON article_views(user_id, viewed_at DESC)"
   );
 
@@ -52,28 +51,21 @@ export async function initEngagementSchema(): Promise<void> {
 
 export async function getLikeCount(slug: string): Promise<number> {
   await initEngagementSchema();
-  const database = await getDb();
-  const stmt = database.prepare(
-    "SELECT COUNT(*) as count FROM article_likes WHERE slug = ?"
+  const row = await dbQueryOne(
+    "SELECT COUNT(*) as count FROM article_likes WHERE slug = ?",
+    [slug]
   );
-  stmt.bind([slug]);
-  stmt.step();
-  const count = stmt.getAsObject().count as number;
-  stmt.free();
-  return count;
+  return Number(row?.count ?? 0);
 }
 
 export async function isLiked(slug: string, userId?: string): Promise<boolean> {
   if (!userId) return false;
   await initEngagementSchema();
-  const database = await getDb();
-  const stmt = database.prepare(
-    "SELECT 1 FROM article_likes WHERE slug = ? AND user_id = ?"
+  const row = await dbQueryOne(
+    "SELECT 1 as found FROM article_likes WHERE slug = ? AND user_id = ?",
+    [slug, userId]
   );
-  stmt.bind([slug, userId]);
-  const found = stmt.step();
-  stmt.free();
-  return found;
+  return Boolean(row);
 }
 
 export async function toggleLike(
@@ -81,24 +73,19 @@ export async function toggleLike(
   userId: string
 ): Promise<{ liked: boolean; count: number }> {
   await initEngagementSchema();
-  const database = await getDb();
-  const now = new Date().toISOString();
   const exists = await isLiked(slug, userId);
 
   if (exists) {
-    database.run("DELETE FROM article_likes WHERE slug = ? AND user_id = ?", [
+    await dbRun("DELETE FROM article_likes WHERE slug = ? AND user_id = ?", [
       slug,
       userId,
     ]);
   } else {
-    database.run(
+    await dbRun(
       "INSERT INTO article_likes (user_id, slug, created_at) VALUES (?, ?, ?)",
-      [userId, slug, now]
+      [userId, slug, new Date().toISOString()]
     );
   }
-
-  const { persist } = await import("@/lib/db/engagement-persist");
-  persist(database);
 
   const count = await getLikeCount(slug);
   return { liked: !exists, count };
@@ -106,25 +93,19 @@ export async function toggleLike(
 
 export async function getComments(slug: string): Promise<Comment[]> {
   await initEngagementSchema();
-  const database = await getDb();
-  const stmt = database.prepare(
-    "SELECT * FROM article_comments WHERE slug = ? ORDER BY created_at DESC"
+  const rows = await dbQueryAll(
+    "SELECT * FROM article_comments WHERE slug = ? ORDER BY created_at DESC",
+    [slug]
   );
-  stmt.bind([slug]);
-  const results: Comment[] = [];
-  while (stmt.step()) {
-    const row = stmt.getAsObject();
-    results.push({
-      id: row.id as string,
-      slug: row.slug as string,
-      userId: row.user_id as string,
-      userName: row.user_name as string,
-      body: row.body as string,
-      createdAt: row.created_at as string,
-    });
-  }
-  stmt.free();
-  return results;
+
+  return rows.map((row) => ({
+    id: row.id as string,
+    slug: row.slug as string,
+    userId: row.user_id as string,
+    userName: row.user_name as string,
+    body: row.body as string,
+    createdAt: row.created_at as string,
+  }));
 }
 
 export async function addComment(
@@ -134,7 +115,6 @@ export async function addComment(
   body: string
 ): Promise<Comment> {
   await initEngagementSchema();
-  const database = await getDb();
   const comment: Comment = {
     id: `${Date.now()}${Math.random().toString(36).slice(2, 7)}`,
     slug,
@@ -144,7 +124,7 @@ export async function addComment(
     createdAt: new Date().toISOString(),
   };
 
-  database.run(
+  await dbRun(
     `INSERT INTO article_comments (id, slug, user_id, user_name, body, created_at)
      VALUES (?, ?, ?, ?, ?, ?)`,
     [
@@ -157,9 +137,6 @@ export async function addComment(
     ]
   );
 
-  const { persist } = await import("@/lib/db/engagement-persist");
-  persist(database);
-
   return comment;
 }
 
@@ -168,107 +145,72 @@ export async function recordArticleView(
   userId: string
 ): Promise<void> {
   await initEngagementSchema();
-  const database = await getDb();
-  const now = new Date().toISOString();
-
-  database.run(
+  await dbRun(
     "INSERT INTO article_views (user_id, slug, viewed_at) VALUES (?, ?, ?)",
-    [userId, slug, now]
+    [userId, slug, new Date().toISOString()]
   );
-
-  const { persist } = await import("@/lib/db/engagement-persist");
-  persist(database);
 }
 
 export async function getUserLikes(userId: string): Promise<UserActivityItem[]> {
   await initEngagementSchema();
-  const database = await getDb();
-  const stmt = database.prepare(
-    "SELECT slug, created_at as createdAt FROM article_likes WHERE user_id = ? ORDER BY created_at DESC"
+  const rows = await dbQueryAll(
+    "SELECT slug, created_at as createdAt FROM article_likes WHERE user_id = ? ORDER BY created_at DESC",
+    [userId]
   );
-  stmt.bind([userId]);
-  const results: UserActivityItem[] = [];
-  while (stmt.step()) {
-    const row = stmt.getAsObject();
-    results.push({
-      slug: row.slug as string,
-      createdAt: row.createdAt as string,
-    });
-  }
-  stmt.free();
-  return results;
+
+  return rows.map((row) => ({
+    slug: row.slug as string,
+    createdAt: row.createdAt as string,
+  }));
 }
 
 export async function getUserComments(userId: string): Promise<UserActivityItem[]> {
   await initEngagementSchema();
-  const database = await getDb();
-  const stmt = database.prepare(
+  const rows = await dbQueryAll(
     `SELECT slug, body, created_at as createdAt
-     FROM article_comments WHERE user_id = ? ORDER BY created_at DESC`
+     FROM article_comments WHERE user_id = ? ORDER BY created_at DESC`,
+    [userId]
   );
-  stmt.bind([userId]);
-  const results: UserActivityItem[] = [];
-  while (stmt.step()) {
-    const row = stmt.getAsObject();
-    results.push({
-      slug: row.slug as string,
-      body: row.body as string,
-      createdAt: row.createdAt as string,
-    });
-  }
-  stmt.free();
-  return results;
+
+  return rows.map((row) => ({
+    slug: row.slug as string,
+    body: row.body as string,
+    createdAt: row.createdAt as string,
+  }));
 }
 
 export async function getUserViews(userId: string): Promise<UserActivityItem[]> {
   await initEngagementSchema();
-  const database = await getDb();
-  const stmt = database.prepare(
+  const rows = await dbQueryAll(
     `SELECT slug, MAX(viewed_at) as createdAt
      FROM article_views WHERE user_id = ?
-     GROUP BY slug ORDER BY createdAt DESC`
+     GROUP BY slug ORDER BY createdAt DESC`,
+    [userId]
   );
-  stmt.bind([userId]);
-  const results: UserActivityItem[] = [];
-  while (stmt.step()) {
-    const row = stmt.getAsObject();
-    results.push({
-      slug: row.slug as string,
-      createdAt: row.createdAt as string,
-    });
-  }
-  stmt.free();
-  return results;
+
+  return rows.map((row) => ({
+    slug: row.slug as string,
+    createdAt: row.createdAt as string,
+  }));
 }
 
 async function resetSeededEngagementOnce(): Promise<void> {
-  const database = await getDb();
-
-  database.run(`
+  await dbRun(`
     CREATE TABLE IF NOT EXISTS app_meta (
       key TEXT PRIMARY KEY,
       value TEXT NOT NULL
     )
   `);
 
-  const stmt = database.prepare(
+  const row = await dbQueryOne(
     "SELECT value FROM app_meta WHERE key = 'engagement_reset_v1'"
   );
-  stmt.bind([]);
-  const alreadyReset = stmt.step()
-    ? (stmt.getAsObject().value as string) === "1"
-    : false;
-  stmt.free();
+  if (row?.value === "1") return;
 
-  if (alreadyReset) return;
-
-  database.run("DELETE FROM article_likes");
-  database.run("DELETE FROM article_comments");
-  database.run("DELETE FROM article_views");
-  database.run(
+  await dbRun("DELETE FROM article_likes");
+  await dbRun("DELETE FROM article_comments");
+  await dbRun("DELETE FROM article_views");
+  await dbRun(
     "INSERT OR REPLACE INTO app_meta (key, value) VALUES ('engagement_reset_v1', '1')"
   );
-
-  const { persist } = await import("@/lib/db/engagement-persist");
-  persist(database);
 }
