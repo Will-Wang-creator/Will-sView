@@ -4,7 +4,11 @@ import Link from "next/link";
 import { Lock } from "lucide-react";
 import { useTranslation } from "@/components/LanguageProvider";
 
-export function Paywall() {
+interface PaywallProps {
+  isLoggedIn?: boolean;
+}
+
+export function Paywall({ isLoggedIn = false }: PaywallProps) {
   const { t } = useTranslation();
 
   return (
@@ -37,12 +41,14 @@ export function Paywall() {
           >
             {t.paywall.subscribe}
           </Link>
-          <p className="mt-3 text-xs text-[var(--muted)]">
-            {t.paywall.alreadyMember}{" "}
-            <Link href="/login" className="text-black underline hover:no-underline">
-              {t.paywall.signIn}
-            </Link>
-          </p>
+          {!isLoggedIn && (
+            <p className="mt-3 text-xs text-[var(--muted)]">
+              {t.paywall.alreadyMember}{" "}
+              <Link href="/login" className="text-black underline hover:no-underline">
+                {t.paywall.signIn}
+              </Link>
+            </p>
+          )}
         </div>
       </div>
     </div>

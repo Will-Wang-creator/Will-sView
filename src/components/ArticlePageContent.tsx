@@ -72,7 +72,7 @@ export function ArticlePageContent({
             }}
           />
         ) : (
-          <Paywall />
+          <Paywall isLoggedIn={!!user} />
         )}
       </div>
 
