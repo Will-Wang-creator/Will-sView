@@ -60,7 +60,7 @@ const pt: Translations = {
     sectionTitle: "Preços simples e transparentes",
     sectionSubtitle: "Uma assinatura. Acesso completo. Cancele quando quiser.",
     bestValue: "Melhor custo-benefício",
-    bestValueSave: "Melhor custo-benefício — economize $24",
+    bestValueSave: "Melhor custo-benefício — economize US$24",
     getStarted: "Começar",
     pageTitle: "Escolha seu plano",
     pageSubtitle:
@@ -70,7 +70,7 @@ const pt: Translations = {
     subscribe: "Assinar",
     processing: "Processando...",
     checkoutFailed: "Falha no pagamento. Tente novamente.",
-    ctaPrice: "$12/mês ou $120/ano. Cancele quando quiser.",
+    ctaPrice: "US$12/mês ou US$120/ano. Cancele quando quiser.",
     plans: {
       monthly: {
         name: "Mensal",
@@ -87,11 +87,11 @@ const pt: Translations = {
       },
       annual: {
         name: "Anual",
-        description: "Economize $24/ano. Melhor opção para quem leva a sério.",
+        description: "Economize US$24/ano. Melhor opção para quem leva a sério.",
         interval: "ano",
         features: [
           "Tudo do plano mensal",
-          "2 meses grátis (economize $24)",
+          "2 meses grátis (economize US$24)",
           "Relatórios exclusivos para membros anuais",
           "Prioridade em sugestões de temas de artigos",
           "Playbooks de engenharia para download (PDF)",
@@ -126,7 +126,7 @@ const pt: Translations = {
     subtitle:
       "Junte-se a mais de 100.000 engenheiros que usam o Will'sView para se manter à frente. Sua carreira agradece.",
     subscribe: "Assinar agora",
-    priceNote: "$12/mês ou $120/ano. Cancele quando quiser.",
+    priceNote: "US$12/mês ou US$120/ano. Cancele quando quiser.",
   },
   footer: {
     tagline:
@@ -193,7 +193,7 @@ const pt: Translations = {
     title: "Artigos",
     subtitle:
       "Comece com prévias gratuitas. Assine para desbloquear o arquivo completo — insights exclusivos sobre como as melhores equipes de engenharia entregam, contratam e operam.",
-    membershipLink: "Ver assinatura — a partir de $12/mês",
+    membershipLink: "Ver assinatura — a partir de US$12/mês",
     premium: "Premium",
     backLink: "Todos os artigos",
   },
@@ -201,7 +201,7 @@ const pt: Translations = {
     title: "Este é conteúdo premium",
     description:
       "Assine para desbloquear este artigo e mais de 20 análises aprofundadas sobre cultura de engenharia, remuneração e melhores práticas.",
-    subscribe: "Assinar — a partir de $12/mês",
+    subscribe: "Assinar — a partir de US$12/mês",
     alreadyMember: "Já é membro?",
     signIn: "Entrar",
   },

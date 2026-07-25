@@ -60,7 +60,7 @@ const fr: Translations = {
     sectionTitle: "Des tarifs simples et transparents",
     sectionSubtitle: "Un abonnement. Accès complet. Résiliez à tout moment.",
     bestValue: "Meilleur rapport qualité-prix",
-    bestValueSave: "Meilleur rapport qualité-prix — économisez 24 $",
+    bestValueSave: "Meilleur rapport qualité-prix — économisez US$24",
     getStarted: "Commencer",
     pageTitle: "Choisissez votre formule",
     pageSubtitle:
@@ -70,7 +70,7 @@ const fr: Translations = {
     subscribe: "S'abonner",
     processing: "Traitement en cours...",
     checkoutFailed: "Échec du paiement. Veuillez réessayer.",
-    ctaPrice: "12 $/mois ou 120 $/an. Résiliez à tout moment.",
+    ctaPrice: "US$12/mois ou US$120/an. Résiliez à tout moment.",
     plans: {
       monthly: {
         name: "Mensuel",
@@ -87,11 +87,11 @@ const fr: Translations = {
       },
       annual: {
         name: "Annuel",
-        description: "Économisez 24 $/an. Le meilleur choix pour les apprenants engagés.",
+        description: "Économisez US$24/an. Le meilleur choix pour les apprenants engagés.",
         interval: "an",
         features: [
           "Tout ce qui est inclus dans la formule mensuelle",
-          "2 mois offerts (économisez 24 $)",
+          "2 mois offerts (économisez US$24)",
           "Rapports exclusifs pour les membres annuels",
           "Priorité sur les demandes de sujets d'articles",
           "Playbooks d'ingénierie téléchargeables (PDF)",
@@ -126,7 +126,7 @@ const fr: Translations = {
     subtitle:
       "Rejoignez plus de 100 000 ingénieurs qui utilisent Will'sView pour rester en avance. Votre carrière vous remerciera.",
     subscribe: "S'abonner maintenant",
-    priceNote: "12 $/mois ou 120 $/an. Résiliez à tout moment.",
+    priceNote: "US$12/mois ou US$120/an. Résiliez à tout moment.",
   },
   footer: {
     tagline:
@@ -193,7 +193,7 @@ const fr: Translations = {
     title: "Articles",
     subtitle:
       "Commencez par les aperçus gratuits. Abonnez-vous pour débloquer l'intégralité des archives — des insights exclusifs sur la façon dont les meilleures équipes d'ingénierie livrent, recrutent et opèrent.",
-    membershipLink: "Voir l'abonnement — à partir de 12 $/mois",
+    membershipLink: "Voir l'abonnement — à partir de US$12/mois",
     premium: "Premium",
     backLink: "Tous les articles",
   },
@@ -201,7 +201,7 @@ const fr: Translations = {
     title: "Contenu premium",
     description:
       "Abonnez-vous pour débloquer cet article et plus de 20 analyses approfondies sur la culture d'ingénierie, la rémunération et les bonnes pratiques.",
-    subscribe: "S'abonner — à partir de 12 $/mois",
+    subscribe: "S'abonner — à partir de US$12/mois",
     alreadyMember: "Déjà membre ?",
     signIn: "Se connecter",
   },

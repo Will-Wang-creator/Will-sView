@@ -29,10 +29,10 @@ export const pricingPlans: PricingPlan[] = [
     name: "Annual",
     price: 120,
     interval: "year",
-    description: "Save $24/year. Best value for committed learners.",
+    description: "Save US$24/year. Best value for committed learners.",
     features: [
       "Everything in Monthly",
-      "2 months free (save $24)",
+      "2 months free (save US$24)",
       "Exclusive annual member reports",
       "Priority article topic requests",
       "Downloadable engineering playbooks (PDF)",

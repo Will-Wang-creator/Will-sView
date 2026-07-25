@@ -60,7 +60,7 @@ const en: Translations = {
     sectionTitle: "Simple, transparent pricing",
     sectionSubtitle: "One subscription. Full access. Cancel anytime.",
     bestValue: "Best value",
-    bestValueSave: "Best value — save $24",
+    bestValueSave: "Best value — save US$24",
     getStarted: "Get started",
     pageTitle: "Choose your plan",
     pageSubtitle:
@@ -70,7 +70,7 @@ const en: Translations = {
     subscribe: "Subscribe",
     processing: "Processing...",
     checkoutFailed: "Checkout failed. Please try again.",
-    ctaPrice: "$12/month or $120/year. Cancel anytime.",
+    ctaPrice: "US$12/month or US$120/year. Cancel anytime.",
     plans: {
       monthly: {
         name: "Monthly",
@@ -87,11 +87,11 @@ const en: Translations = {
       },
       annual: {
         name: "Annual",
-        description: "Save $24/year. Best value for committed learners.",
+        description: "Save US$24/year. Best value for committed learners.",
         interval: "year",
         features: [
           "Everything in Monthly",
-          "2 months free (save $24)",
+          "2 months free (save US$24)",
           "Exclusive annual member reports",
           "Priority article topic requests",
           "Downloadable engineering playbooks (PDF)",
@@ -126,7 +126,7 @@ const en: Translations = {
     subtitle:
       "Join 100,000+ engineers who use Will'sView to stay ahead. Your career will thank you.",
     subscribe: "Subscribe now",
-    priceNote: "$12/month or $120/year. Cancel anytime.",
+    priceNote: "US$12/month or US$120/year. Cancel anytime.",
   },
   footer: {
     tagline:
@@ -193,7 +193,7 @@ const en: Translations = {
     title: "Articles",
     subtitle:
       "Start with free previews. Subscribe to unlock the full archive — insider insights on how the best engineering teams ship, hire, and operate.",
-    membershipLink: "View membership — from $12/month",
+    membershipLink: "View membership — from US$12/month",
     premium: "Premium",
     backLink: "All articles",
   },
@@ -201,7 +201,7 @@ const en: Translations = {
     title: "This is premium content",
     description:
       "Subscribe to unlock this article and 20+ deep dives on engineering culture, compensation, and best practices.",
-    subscribe: "Subscribe — from $12/month",
+    subscribe: "Subscribe — from US$12/month",
     alreadyMember: "Already a member?",
     signIn: "Sign in",
   },

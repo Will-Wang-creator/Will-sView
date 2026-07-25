@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import { Check } from "lucide-react";
 import { pricingPlans } from "@/lib/data/pricing";
+import { formatPrice } from "@/lib/site";
 import { useTranslation } from "@/components/LanguageProvider";
 
 export function PricingSection() {
@@ -56,7 +57,7 @@ export function PricingSection() {
                 )}
                 <h3 className="text-lg font-semibold">{planT.name}</h3>
                 <div className="mt-4 flex items-baseline gap-1">
-                  <span className="text-4xl font-bold">${plan.price}</span>
+                  <span className="text-4xl font-bold">{formatPrice(plan.price)}</span>
                   <span className="text-[var(--muted)]">/{planT.interval}</span>
                 </div>
                 <p className="mt-2 text-sm text-[var(--muted)]">{planT.description}</p>

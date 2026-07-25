@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { Check, Loader2 } from "lucide-react";
 import { pricingPlans } from "@/lib/data/pricing";
+import { formatPrice } from "@/lib/site";
 import { useTranslation } from "@/components/LanguageProvider";
 
 export default function PricingPage() {
@@ -82,7 +83,7 @@ export default function PricingPage() {
               )}
               <h2 className="text-xl font-semibold">{planT.name}</h2>
               <div className="mt-4 flex items-baseline gap-1">
-                <span className="text-5xl font-bold">${plan.price}</span>
+                <span className="text-5xl font-bold">{formatPrice(plan.price)}</span>
                 <span className="text-[var(--muted)]">/{planT.interval}</span>
               </div>
               <p className="mt-2 text-sm text-[var(--muted)]">{planT.description}</p>
@@ -113,7 +114,7 @@ export default function PricingPage() {
                     <Loader2 size={16} className="animate-spin" /> {t.pricing.processing}
                   </span>
                 ) : (
-                  `${t.pricing.subscribe} — $${plan.price}/${planT.interval}`
+                  `${t.pricing.subscribe} — ${formatPrice(plan.price)}/${planT.interval}`
                 )}
               </button>
             </div>

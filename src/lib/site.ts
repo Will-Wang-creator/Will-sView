@@ -1,5 +1,11 @@
 export const SITE_NAME = "Will'sView";
 
+export const CURRENCY_PREFIX = "US$";
+
+export function formatPrice(amount: number): string {
+  return `${CURRENCY_PREFIX}${amount}`;
+}
+
 export const SITE_CONTACT_EMAIL =
   process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "asd123456w910909@gmail.com";
 

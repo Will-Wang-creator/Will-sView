@@ -60,7 +60,7 @@ const ko: Translations = {
     sectionTitle: "간단하고 투명한 요금",
     sectionSubtitle: "하나의 구독. 전체 액세스. 언제든 해지 가능.",
     bestValue: "최고의 가치",
-    bestValueSave: "최고의 가치 — $24 절약",
+    bestValueSave: "최고의 가치 — US$24 절약",
     getStarted: "시작하기",
     pageTitle: "플랜 선택",
     pageSubtitle:
@@ -70,7 +70,7 @@ const ko: Translations = {
     subscribe: "구독",
     processing: "처리 중...",
     checkoutFailed: "결제에 실패했습니다. 다시 시도해 주세요.",
-    ctaPrice: "$12/월 또는 $120/년. 언제든 해지 가능.",
+    ctaPrice: "US$12/월 또는 US$120/년. 언제든 해지 가능.",
     plans: {
       monthly: {
         name: "월간",
@@ -87,11 +87,11 @@ const ko: Translations = {
       },
       annual: {
         name: "연간",
-        description: "연간 $24 절약. 진지한 학습자를 위한 최고의 가치.",
+        description: "연간 US$24 절약. 진지한 학습자를 위한 최고의 가치.",
         interval: "년",
         features: [
           "월간 플랜의 모든 혜택",
-          "2개월 무료 ($24 절약)",
+          "2개월 무료 (US$24 절약)",
           "연간 멤버 전용 리포트",
           "아티클 주제 우선 요청",
           "엔지니어링 플레이북 (PDF)",
@@ -126,7 +126,7 @@ const ko: Translations = {
     subtitle:
       "Will'sView로 앞서 나가는 10만 명 이상의 엔지니어에 합류하세요. 커리어가 감사할 것입니다.",
     subscribe: "지금 구독",
-    priceNote: "$12/월 또는 $120/년. 언제든 해지 가능.",
+    priceNote: "US$12/월 또는 US$120/년. 언제든 해지 가능.",
   },
   footer: {
     tagline:
@@ -192,7 +192,7 @@ const ko: Translations = {
     title: "아티클",
     subtitle:
       "무료 미리보기로 시작하세요. 구독하여 전체 아카이브 잠금 해제 — 최고의 엔지니어링 팀 내부 인사이트.",
-    membershipLink: "멤버십 보기 — $12/월부터",
+    membershipLink: "멤버십 보기 — US$12/월부터",
     premium: "프리미엄",
     backLink: "모든 아티클",
   },
@@ -200,7 +200,7 @@ const ko: Translations = {
     title: "프리미엄 콘텐츠입니다",
     description:
       "구독하여 이 아티클과 20개 이상의 심층 분석(문화, 보상, 모범 사례)을 잠금 해제하세요.",
-    subscribe: "구독 — $12/월부터",
+    subscribe: "구독 — US$12/월부터",
     alreadyMember: "이미 멤버이신가요?",
     signIn: "로그인",
   },
