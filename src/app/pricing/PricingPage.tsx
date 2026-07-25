@@ -25,6 +25,21 @@ export default function PricingPage() {
         body: JSON.stringify({ planId }),
       });
       const data = await res.json();
+      if (data.newebpay) {
+        const form = document.createElement("form");
+        form.method = data.newebpay.method ?? "POST";
+        form.action = data.newebpay.action;
+        for (const [key, value] of Object.entries(data.newebpay.fields as Record<string, string>)) {
+          const input = document.createElement("input");
+          input.type = "hidden";
+          input.name = key;
+          input.value = value;
+          form.appendChild(input);
+        }
+        document.body.appendChild(form);
+        form.submit();
+        return;
+      }
       if (data.url) {
         window.location.href = data.url;
       } else if (res.status === 401) {

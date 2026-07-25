@@ -114,6 +114,18 @@ function initSchema(database: Database): void {
     "CREATE INDEX IF NOT EXISTS idx_article_views_user ON article_views(user_id, viewed_at DESC)"
   );
 
+  database.run(`
+    CREATE TABLE IF NOT EXISTS pending_payments (
+      merchant_order_no TEXT PRIMARY KEY,
+      user_email TEXT NOT NULL,
+      plan_id TEXT NOT NULL,
+      amount_twd INTEGER NOT NULL,
+      status TEXT NOT NULL DEFAULT 'pending',
+      created_at TEXT NOT NULL,
+      paid_at TEXT
+    )
+  `);
+
   migrateSchema(database);
 }
 
@@ -391,6 +403,68 @@ export async function getLoginLogs(userId?: string): Promise<LoginLog[]> {
   }
   stmt.free();
   return logs;
+}
+
+export interface PendingPayment {
+  merchantOrderNo: string;
+  userEmail: string;
+  planId: string;
+  amountTwd: number;
+  status: string;
+  createdAt: string;
+  paidAt: string | null;
+}
+
+export async function createPendingPayment(
+  merchantOrderNo: string,
+  userEmail: string,
+  planId: string,
+  amountTwd: number
+): Promise<void> {
+  const database = await getDb();
+  const now = new Date().toISOString();
+  database.run(
+    `INSERT INTO pending_payments (
+      merchant_order_no, user_email, plan_id, amount_twd, status, created_at
+    ) VALUES (?, ?, ?, ?, 'pending', ?)`,
+    [merchantOrderNo, userEmail, planId, amountTwd, now]
+  );
+  persist();
+}
+
+export async function findPendingPayment(
+  merchantOrderNo: string
+): Promise<PendingPayment | null> {
+  const database = await getDb();
+  const row = queryOne(
+    database,
+    "SELECT * FROM pending_payments WHERE merchant_order_no = ?",
+    [merchantOrderNo]
+  );
+  if (!row) return null;
+  return {
+    merchantOrderNo: row.merchant_order_no as string,
+    userEmail: row.user_email as string,
+    planId: row.plan_id as string,
+    amountTwd: row.amount_twd as number,
+    status: row.status as string,
+    createdAt: row.created_at as string,
+    paidAt: (row.paid_at as string | null) ?? null,
+  };
+}
+
+export async function markPendingPaymentPaid(merchantOrderNo: string): Promise<boolean> {
+  const database = await getDb();
+  const pending = await findPendingPayment(merchantOrderNo);
+  if (!pending || pending.status === "paid") return false;
+
+  const now = new Date().toISOString();
+  database.run(
+    `UPDATE pending_payments SET status = 'paid', paid_at = ? WHERE merchant_order_no = ?`,
+    [now, merchantOrderNo]
+  );
+  persist();
+  return true;
 }
 
 export async function getAllMembers(): Promise<

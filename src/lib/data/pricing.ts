@@ -2,6 +2,7 @@ export interface PricingPlan {
   id: string;
   name: string;
   price: number;
+  priceTwd: number;
   interval: "month" | "year";
   description: string;
   features: string[];
@@ -13,6 +14,7 @@ export const pricingPlans: PricingPlan[] = [
     id: "monthly",
     name: "Monthly",
     price: 12,
+    priceTwd: 399,
     interval: "month",
     description: "Full access, billed monthly. Cancel anytime.",
     features: [
@@ -28,6 +30,7 @@ export const pricingPlans: PricingPlan[] = [
     id: "annual",
     name: "Annual",
     price: 120,
+    priceTwd: 3990,
     interval: "year",
     description: "Save US$24/year. Best value for committed learners.",
     features: [
