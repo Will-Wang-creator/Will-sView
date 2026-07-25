@@ -1,0 +1,55 @@
+name: Weekly Article
+
+on:
+  schedule:
+    # Every Monday 01:00 UTC (09:00 UTC+8)
+    - cron: "0 1 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  generate-article:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Generate weekly article
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_MODEL: gpt-4o-mini
+        run: node scripts/generate-weekly-article.mjs
+
+      - name: Verify build
+        run: npm run build
+
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v7
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          branch: weekly-article/${{ github.run_id }}
+          title: "Weekly article (${{ github.run_number }})"
+          commit-message: "Add weekly article from latest tech news"
+          body: |
+            Automated weekly article generated from latest tech/engineering news.
+
+            - Source: Hacker News + Google News RSS
+            - Review title, facts, and tone before merging
+            - Merging triggers production deploy
+
+            **Manual run:** Actions → Weekly Article → Run workflow
+          labels: |
+            content
+            automated
