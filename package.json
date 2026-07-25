@@ -13,6 +13,7 @@
     "articles:weekly": "node scripts/generate-weekly-article.mjs"
   },
   "dependencies": {
+    "@vercel/speed-insights": "^2.0.0",
     "bcryptjs": "^3.0.3",
     "framer-motion": "^12.42.2",
     "jose": "^6.2.4",

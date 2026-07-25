@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { Analytics } from "@/components/Analytics";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import { LanguageProvider } from "@/components/LanguageProvider";
 import { getSession } from "@/lib/auth";
 import { getLocale } from "@/lib/i18n/server";
@@ -62,6 +63,7 @@ export default async function RootLayout({
           <Footer />
         </LanguageProvider>
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
