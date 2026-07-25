@@ -60,7 +60,7 @@ const es: Translations = {
     sectionTitle: "Precios simples y transparentes",
     sectionSubtitle: "Una suscripción. Acceso completo. Cancela cuando quieras.",
     bestValue: "Mejor valor",
-    bestValueSave: "Mejor valor — ahorra US$24",
+    bestValueSave: "Mejor valor — ahorra NT$798",
     getStarted: "Empezar",
     pageTitle: "Elige tu plan",
     pageSubtitle:
@@ -70,7 +70,7 @@ const es: Translations = {
     subscribe: "Suscribirse",
     processing: "Procesando...",
     checkoutFailed: "Error en el pago. Inténtalo de nuevo.",
-    ctaPrice: "US$12/mes o US$120/año. Cancela cuando quieras.",
+    ctaPrice: "NT$399/mes o NT$3990/año. Cancela cuando quieras.",
     plans: {
       monthly: {
         name: "Mensual",
@@ -87,11 +87,11 @@ const es: Translations = {
       },
       annual: {
         name: "Anual",
-        description: "Ahorra US$24 al año. La mejor opción para quienes van en serio.",
+        description: "Ahorra NT$798 al año. La mejor opción para quienes van en serio.",
         interval: "año",
         features: [
           "Todo lo del plan mensual",
-          "2 meses gratis (ahorra US$24)",
+          "2 meses gratis (ahorra NT$798)",
           "Informes exclusivos para miembros anuales",
           "Prioridad en solicitudes de temas de artículos",
           "Playbooks de ingeniería descargables (PDF)",
@@ -126,7 +126,7 @@ const es: Translations = {
     subtitle:
       "Únete a más de 100.000 ingenieros que usan Will'sView para mantenerse a la vanguardia. Tu carrera te lo agradecerá.",
     subscribe: "Suscribirse ahora",
-    priceNote: "US$12/mes o US$120/año. Cancela cuando quieras.",
+    priceNote: "NT$399/mes o NT$3990/año. Cancela cuando quieras.",
   },
   footer: {
     tagline:
@@ -193,7 +193,7 @@ const es: Translations = {
     title: "Artículos",
     subtitle:
       "Empieza con vistas previas gratuitas. Suscríbete para desbloquear el archivo completo — información privilegiada sobre cómo los mejores equipos de ingeniería lanzan, contratan y operan.",
-    membershipLink: "Ver membresía — desde US$12/mes",
+    membershipLink: "Ver membresía — desde NT$399/mes",
     premium: "Premium",
     backLink: "Todos los artículos",
   },
@@ -201,7 +201,7 @@ const es: Translations = {
     title: "Este es contenido premium",
     description:
       "Suscríbete para desbloquear este artículo y más de 20 análisis en profundidad sobre cultura de ingeniería, compensación y mejores prácticas.",
-    subscribe: "Suscribirse — desde US$12/mes",
+    subscribe: "Suscribirse — desde NT$399/mes",
     alreadyMember: "¿Ya eres miembro?",
     signIn: "Iniciar sesión",
   },

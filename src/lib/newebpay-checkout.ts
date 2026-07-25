@@ -57,12 +57,12 @@ export async function createNewebPayCheckout(params: {
     merchantOrderNo,
     params.userEmail,
     plan.id,
-    plan.priceTwd
+    plan.price
   );
 
   const form = createNewebPayForm(config, {
     merchantOrderNo,
-    amountTwd: plan.priceTwd,
+    amountTwd: plan.price,
     itemDesc: `${SITE_NAME} ${plan.name} membership`,
     email: params.userEmail,
     returnUrl: `${baseUrl}/api/newebpay/return`,

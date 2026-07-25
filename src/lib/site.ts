@@ -1,6 +1,6 @@
 export const SITE_NAME = "Will'sView";
 
-export const CURRENCY_PREFIX = "US$";
+export const CURRENCY_PREFIX = "NT$";
 
 export function formatPrice(amount: number): string {
   return `${CURRENCY_PREFIX}${amount}`;

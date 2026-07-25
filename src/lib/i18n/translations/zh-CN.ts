@@ -60,7 +60,7 @@ const zhCN: Translations = {
     sectionTitle: "简单透明的定价",
     sectionSubtitle: "一个订阅。完整访问。随时取消。",
     bestValue: "最划算",
-    bestValueSave: "最划算 — 省 US$24",
+    bestValueSave: "最划算 — 省 NT$798",
     getStarted: "开始使用",
     pageTitle: "选择方案",
     pageSubtitle:
@@ -70,7 +70,7 @@ const zhCN: Translations = {
     subscribe: "订阅",
     processing: "处理中...",
     checkoutFailed: "结账失败，请重试。",
-    ctaPrice: "US$12/月 或 US$120/年。随时取消。",
+    ctaPrice: "NT$399/月 或 NT$3990/年。随时取消。",
     plans: {
       monthly: {
         name: "月付",
@@ -87,11 +87,11 @@ const zhCN: Translations = {
       },
       annual: {
         name: "年付",
-        description: "每年省 US$24。最适合认真学习者。",
+        description: "每年省 NT$798。最适合认真学习者。",
         interval: "年",
         features: [
           "月付方案全部内容",
-          "免费 2 个月（省 US$24）",
+          "免费 2 个月（省 NT$798）",
           "年费会员专属报告",
           "优先提出文章主题",
           "工程 Playbook（PDF）",
@@ -126,7 +126,7 @@ const zhCN: Translations = {
     subtitle:
       "加入 10 万+ 使用 Will'sView 领先同行的工程师。你的职业生涯会感谢你。",
     subscribe: "立即订阅",
-    priceNote: "US$12/月 或 US$120/年。随时取消。",
+    priceNote: "NT$399/月 或 NT$3990/年。随时取消。",
   },
   footer: {
     tagline:
@@ -192,7 +192,7 @@ const zhCN: Translations = {
     title: "文章",
     subtitle:
       "从免费预览开始。订阅解锁完整存档 — 最佳工程团队如何交付、招聘、运作的内幕。",
-    membershipLink: "查看会员方案 — US$12/月起",
+    membershipLink: "查看会员方案 — NT$399/月起",
     premium: "Premium",
     backLink: "所有文章",
   },
@@ -200,7 +200,7 @@ const zhCN: Translations = {
     title: "这是 Premium 内容",
     description:
       "订阅以解锁本文及 20+ 篇关于工程文化、薪酬、最佳实践的深度文章。",
-    subscribe: "订阅 — US$12/月起",
+    subscribe: "订阅 — NT$399/月起",
     alreadyMember: "已是会员？",
     signIn: "登录",
   },

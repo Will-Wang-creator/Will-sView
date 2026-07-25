@@ -60,7 +60,7 @@ const de: Translations = {
     sectionTitle: "Einfache, transparente Preise",
     sectionSubtitle: "Ein Abo. Voller Zugriff. Jederzeit kündbar.",
     bestValue: "Bestes Preis-Leistungs-Verhältnis",
-    bestValueSave: "Bestes Preis-Leistungs-Verhältnis — US$24 sparen",
+    bestValueSave: "Bestes Preis-Leistungs-Verhältnis — NT$798 sparen",
     getStarted: "Loslegen",
     pageTitle: "Wählen Sie Ihren Plan",
     pageSubtitle:
@@ -70,7 +70,7 @@ const de: Translations = {
     subscribe: "Abonnieren",
     processing: "Wird verarbeitet...",
     checkoutFailed: "Checkout fehlgeschlagen. Bitte erneut versuchen.",
-    ctaPrice: "US$12/Monat oder US$120/Jahr. Jederzeit kündbar.",
+    ctaPrice: "NT$399/Monat oder NT$3990/Jahr. Jederzeit kündbar.",
     plans: {
       monthly: {
         name: "Monatlich",
@@ -87,11 +87,11 @@ const de: Translations = {
       },
       annual: {
         name: "Jährlich",
-        description: "US$24/Jahr sparen. Bestes Preis-Leistungs-Verhältnis für engagierte Lernende.",
+        description: "NT$798/Jahr sparen. Bestes Preis-Leistungs-Verhältnis für engagierte Lernende.",
         interval: "Jahr",
         features: [
           "Alles aus dem Monatsplan",
-          "2 Monate gratis (US$24 sparen)",
+          "2 Monate gratis (NT$798 sparen)",
           "Exklusive Berichte für Jahresmitglieder",
           "Priorität bei Artikel-Themenwünschen",
           "Herunterladbare Engineering-Playbooks (PDF)",
@@ -126,7 +126,7 @@ const de: Translations = {
     subtitle:
       "Schließen Sie sich über 100.000 Ingenieuren an, die Will'sView nutzen, um voraus zu bleiben. Ihre Karriere wird es Ihnen danken.",
     subscribe: "Jetzt abonnieren",
-    priceNote: "US$12/Monat oder US$120/Jahr. Jederzeit kündbar.",
+    priceNote: "NT$399/Monat oder NT$3990/Jahr. Jederzeit kündbar.",
   },
   footer: {
     tagline:
@@ -193,7 +193,7 @@ const de: Translations = {
     title: "Artikel",
     subtitle:
       "Starten Sie mit kostenlosen Vorschauen. Abonnieren Sie, um das gesamte Archiv freizuschalten — Insider-Einblicke, wie die besten Engineering-Teams liefern, einstellen und arbeiten.",
-    membershipLink: "Mitgliedschaft ansehen — ab US$12/Monat",
+    membershipLink: "Mitgliedschaft ansehen — ab NT$399/Monat",
     premium: "Premium",
     backLink: "Alle Artikel",
   },
@@ -201,7 +201,7 @@ const de: Translations = {
     title: "Dies ist Premium-Inhalt",
     description:
       "Abonnieren Sie, um diesen Artikel und über 20 Deep Dives zu Engineering-Kultur, Vergütung und Best Practices freizuschalten.",
-    subscribe: "Abonnieren — ab US$12/Monat",
+    subscribe: "Abonnieren — ab NT$399/Monat",
     alreadyMember: "Bereits Mitglied?",
     signIn: "Anmelden",
   },

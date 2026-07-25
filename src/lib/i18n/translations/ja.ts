@@ -60,7 +60,7 @@ const ja: Translations = {
     sectionTitle: "シンプルで透明な料金",
     sectionSubtitle: "1つのサブスクリプション。フルアクセス。いつでも解約可能。",
     bestValue: "お得",
-    bestValueSave: "最もお得 — US$24節約",
+    bestValueSave: "最もお得 — NT$798節約",
     getStarted: "始める",
     pageTitle: "プランを選択",
     pageSubtitle:
@@ -70,7 +70,7 @@ const ja: Translations = {
     subscribe: "登録",
     processing: "処理中...",
     checkoutFailed: "チェックアウトに失敗しました。もう一度お試しください。",
-    ctaPrice: "US$12/月 または US$120/年。いつでも解約可能。",
+    ctaPrice: "NT$399/月 または NT$3990/年。いつでも解約可能。",
     plans: {
       monthly: {
         name: "月額",
@@ -87,11 +87,11 @@ const ja: Translations = {
       },
       annual: {
         name: "年額",
-        description: "年間US$24節約。本格的に学ぶ方に最適。",
+        description: "年間NT$798節約。本格的に学ぶ方に最適。",
         interval: "年",
         features: [
           "月額プランの全内容",
-          "2ヶ月分無料（US$24節約）",
+          "2ヶ月分無料（NT$798節約）",
           "年間メンバー限定レポート",
           "記事テーマの優先リクエスト",
           "エンジニアリングプレイブック（PDF）",
@@ -126,7 +126,7 @@ const ja: Translations = {
     subtitle:
       "Will'sViewで先を行く10万人以上のエンジニアに参加。キャリアが感謝するでしょう。",
     subscribe: "今すぐ登録",
-    priceNote: "US$12/月 または US$120/年。いつでも解約可能。",
+    priceNote: "NT$399/月 または NT$3990/年。いつでも解約可能。",
   },
   footer: {
     tagline:
@@ -192,7 +192,7 @@ const ja: Translations = {
     title: "記事",
     subtitle:
       "無料プレビューから始めましょう。サブスク登録でアーカイブ全件解除 — 最高のエンジニアリングチームの内部情報。",
-    membershipLink: "メンバーシップ — US$12/月から",
+    membershipLink: "メンバーシップ — NT$399/月から",
     premium: "プレミアム",
     backLink: "すべての記事",
   },
@@ -200,7 +200,7 @@ const ja: Translations = {
     title: "これはプレミアムコンテンツです",
     description:
       "サブスク登録でこの記事と20以上の深掘り記事（文化・報酬・ベストプラクティス）を解除。",
-    subscribe: "登録 — US$12/月から",
+    subscribe: "登録 — NT$399/月から",
     alreadyMember: "すでにメンバーですか？",
     signIn: "ログイン",
   },
