@@ -6,7 +6,7 @@ export const article: Article = {
   excerpt:
     "Training and serving Gemini required rethinking Google's entire ML infrastructure stack. TPUs, Borg, and the engineering lessons for any team scaling AI.",
   category: "Deep Dive",
-  readTime: "32 min",
+  readTime: "18 min",
   publishedAt: "2026-04-24",
   isPremium: true,
   preview:
@@ -269,6 +269,18 @@ Specific costs:
 - **Regression risk** — model quality fluctuations during framework migration
 
 > "The merge was the right decision for Gemini, but it was expensive. We lost two quarters of research velocity to infrastructure integration. The lesson for other companies: if you're going to merge ML teams, budget 6–12 months of integration time and don't expect research output to continue at the same pace." — Engineering manager, post-merger Google Brain/DeepMind
+
+### TPU vs GPU: When Each Makes Sense
+
+| Workload | TPU v5p (training) | TPU v5e (inference) | NVIDIA H100 cluster | Recommendation |
+|----------|-------------------|---------------------|---------------------|----------------|
+| Large-scale pretraining | Optimal | N/A | 2–3× cost premium | TPU at Google scale |
+| Fine-tuning (< 100B params) | Good | Overkill | Competitive | GPU rental |
+| High-QPS inference | N/A | Optimal | Good with batching | TPU v5e or tiered GPU |
+| Research experimentation | Poor (job queue) | Poor | Excellent | GPU |
+| Multi-modal training | Optimal | N/A | Competitive | TPU if on GCP |
+
+Google's split between v5p (training) and v5e (inference) reflects a lesson every ML infrastructure team eventually learns: the hardware optimized for gradient computation is not the hardware optimized for low-latency token generation.
 
 ---
 

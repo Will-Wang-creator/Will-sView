@@ -6,7 +6,7 @@ export const article: Article = {
   excerpt:
     "300+ cities, Workers running V8 isolates at the edge — how Cloudflare's engineering team built a developer platform on top of a global CDN.",
   category: "Deep Dive",
-  readTime: "30 min",
+  readTime: "18 min",
   publishedAt: "2026-06-05",
   isPremium: true,
   preview:
@@ -184,6 +184,18 @@ There's no universal winner. Rough heuristics:
 - **AWS (Lambda + CloudFront):** Deep AWS integration, complex VPC requirements, existing Terraform investment
 - **Fly.io:** Full containers at regional edge, stateful apps, Postgres with regional placement
 - **Vercel:** Frontend-first teams, Next.js optimization, less control over raw edge logic
+
+### Edge Platform Comparison (2026)
+
+| Platform | Runtime model | Cold start | Stateful primitives | Best fit |
+|----------|--------------|------------|---------------------|----------|
+| Cloudflare Workers | V8 isolates | < 1ms | Durable Objects, D1 | Global HTTP middleware |
+| AWS Lambda@Edge | Node/Python containers | 50–200ms | None native | AWS-native stacks |
+| Fly.io | Firecracker microVMs | 200–500ms | Regional Postgres | Stateful regional apps |
+| Vercel Edge | V8 isolates | < 5ms | KV (limited) | Next.js frontends |
+| Deno Deploy | V8 isolates | < 5ms | Deno KV | TypeScript-first APIs |
+
+Cloudflare's isolate model trades filesystem access and long-running processes for sub-millisecond startup and zero egress on R2. Teams migrating from Lambda@Edge typically report 40–60% latency improvement on auth and routing workloads — but spend the first month rewriting code that assumed Node.js filesystem APIs.
 
 ---
 

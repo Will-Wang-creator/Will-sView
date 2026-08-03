@@ -6,7 +6,7 @@ export const article: Article = {
   excerpt:
     "Meta's engineering culture evolved post-layoffs and post-metaverse pivot. Current engineers describe what's changed — and what stubbornly stayed the same.",
   category: "Engineering Culture",
-  readTime: "30 min",
+  readTime: "18 min",
   publishedAt: "2026-04-10",
   isPremium: true,
   preview:
@@ -241,6 +241,18 @@ Synthesizing our interviews, the experience of being a Meta engineer in 2026 dep
 - **Uncertain future.** Smart glasses show promise; VR platform ambitions have contracted. Long-term commitment from leadership is unclear.
 - **Talented colleagues, diminishing resources.** The team that remains is strong, but budget and headcount continue to shrink.
 - **Compensation maintained but trajectory unclear.** Good pay today, but resume value depends on whether Reality Labs products succeed.
+
+### Meta Engineering Compensation by Track (2026)
+
+| Track | Base (E5 equiv.) | Total comp range | Promotion velocity | Job security |
+|-------|-----------------|------------------|-------------------|--------------|
+| AI/ML (Llama, ranking) | $220–280K | $450–700K | Fast (18–24 mo) | High |
+| Core product (FB, IG) | $200–250K | $380–550K | Slow (24–36 mo) | Moderate |
+| Infrastructure/platform | $210–260K | $400–580K | Moderate | High |
+| Reality Labs | $200–240K | $350–500K | Stalled | Uncertain |
+| Ads/monetization | $210–270K | $420–620K | Moderate | High |
+
+These ranges reflect Bay Area compensation for engineers with 5–8 years of experience. AI track premiums of 20–40% over core product are the largest internal disparity Meta engineers reported — and a primary driver of Bootcamp team selection in 2026.
 
 ---
 

@@ -6,7 +6,7 @@ export const article: Article = {
   excerpt:
     "Stripe processes hundreds of billions annually. Engineers describe the deployment practices, code review culture, and on-call model behind reliable payments.",
   category: "Deep Dive",
-  readTime: "32 min",
+  readTime: "18 min",
   publishedAt: "2026-05-08",
   isPremium: true,
   preview:
@@ -225,6 +225,19 @@ Stripe's infrastructure investment makes sense at their volume. A Series A start
 - **Four-hour review SLA** without review culture produces LGTM theater
 - **Gradual rollouts** without metric comparison just delays incidents
 - **Executive on-call** without authority to unblock is performance, not culture
+
+### Stripe Deployment Safety Checklist
+
+| Gate | Requirement | Automated? | Typical duration |
+|------|-------------|------------|------------------|
+| Code review | 2+ approvers on critical paths | Partial (routing) | 2–4 hours |
+| Feature flag | All revenue-impacting changes flagged | Yes (CI block) | Minutes |
+| Shadow mode | New logic runs parallel before cutover | Yes | 24–72 hours |
+| Gradual rollout | 1% → 5% → 25% → 100% with metric gates | Yes | 3–7 days |
+| Rollback test | Verified rollback path before merge | Manual checklist | 15 min |
+| Postmortem | Required for SEV-2+ within 72 hours | Tracked in Linear | 48 hours |
+
+Engineers described this checklist as "bureaucracy that earns its keep." A single prevented incident — like a routing bug that would have misdirected $2M in merchant payouts — pays for months of rollout overhead.
 
 ---
 

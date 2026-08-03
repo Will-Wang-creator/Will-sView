@@ -6,7 +6,7 @@ export const article: Article = {
   excerpt:
     "How compensation bands work at remote-first companies — data from 200+ companies on salary, equity, and benefits.",
   category: "Career",
-  readTime: "25 min",
+  readTime: "18 min",
   publishedAt: "2026-02-20",
   isPremium: false,
   preview:
@@ -219,6 +219,54 @@ Watch for these patterns in offers:
 4. **90-day exercise window** — Standard but painful; negotiate for longer
 5. **"US hours required" at non-US rates** — Time zone requirements should come with US-tier pay
 6. **Contractor classification for full-time work** — May indicate tax optimization at your expense
+
+---
+
+## 7. Comparing Offers: A Worked Example
+
+Consider a senior backend engineer (8 YOE) evaluating three remote offers in mid-2026. The numbers below are representative of what we saw in our compensation survey — anonymized but realistic.
+
+**Offer A: Series B startup, global pay band**
+- Base: $210K
+- Equity: 0.08% (4-year vest, 1-year cliff), last 409A at $18/share
+- Benefits: $3K home office stipend, unlimited PTO (team avg 18 days)
+- Model: Same pay regardless of location
+
+**Offer B: Public tech company, location-adjusted**
+- Base: $185K (0.85 geo factor for Austin)
+- Equity: $280K RSU over 4 years (full geo adjustment)
+- Benefits: $500/month coworking stipend, 20 days PTO
+- Model: SF base × geo factor; Austin factor = 0.85
+
+**Offer C: AI startup, national band with premium**
+- Base: $230K
+- Equity: 0.04% (4-year vest), last 409A at $42/share
+- Benefits: $5K learning budget, 15 days PTO
+- Model: National US band + 10% AI premium
+
+### How to compare them
+
+Don't compare base alone. Calculate **total first-year compensation**:
+
+| Component | Offer A | Offer B | Offer C |
+|-----------|---------|---------|---------|
+| Base | $210K | $185K | $230K |
+| Year-1 equity (face) | $36K | $70K | $42K |
+| Stipends/benefits | $3K | $6K | $5K |
+| **Total year 1** | **$249K** | **$261K** | **$277K** |
+
+Offer C wins on year-1 total — but equity risk differs dramatically. Offer A's startup equity could be worth $0 or $2M depending on exit. Offer B's RSUs are liquid and predictable. Offer C sits in between.
+
+### Questions to ask before accepting
+
+1. **"What was the last 409A valuation, and when is the next one?"** — Grant size is meaningless without share price context.
+2. **"How does geo factor change if I relocate?"** — Some companies recalculate; others grandfather.
+3. **"What's the exercise window after departure?"** — 90 days is standard; 7–10 years is negotiable at some startups.
+4. **"Is there a compensation review cycle, and when is my first eligible review?"** — A low base with review in 6 months differs from review in 18 months.
+
+> "I accepted Offer B even though Offer C had higher base, because RSU liquidity let me buy a house. Equity is only compensation when you can actually use it." — Senior engineer, survey respondent
+
+When in doubt, optimize for the component you need most: cash flow (base + sign-on), long-term upside (equity), or stability (public company RSUs). No single offer maximizes all three — and the right tradeoff depends on your financial situation, not a generic ranking.
 
 ---
 

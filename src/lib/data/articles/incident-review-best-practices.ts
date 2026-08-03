@@ -6,7 +6,7 @@ export const article: Article = {
   excerpt:
     "A practical framework for blameless postmortems that actually prevent repeat incidents — used by SRE teams at top tech companies.",
   category: "Best Practices",
-  readTime: "30 min",
+  readTime: "18 min",
   publishedAt: "2026-02-28",
   isPremium: true,
   preview:
@@ -251,6 +251,40 @@ Duration: [X hours Y minutes]
 - **Startups** — GitHub issue templates linked to postmortem markdown in repo
 
 The tool matters less than the **discipline**: owner, deadline, tracking, review meeting.
+
+---
+
+## 7. Scaling Postmortems Across the Organization
+
+Individual teams that adopt postmortem discipline see immediate improvement. Scaling that discipline across 50+ teams — without creating bureaucracy — is the harder problem. Three organizations we studied solved it differently.
+
+### Google's approach: Centralized tooling, decentralized ownership
+
+Google's internal postmortem tool integrates with their incident management system. When an incident closes, a postmortem draft auto-populates with timeline data, affected services, and on-call responders. The team owns the analysis; the tool owns the structure.
+
+Key policy: **postmortems are published internally by default.** Any Googler can read any postmortem. This creates organizational learning at scale — an SRE on Ads can learn from a Search incident without waiting for a newsletter summary. Privacy-sensitive incidents get redacted sections, not hidden documents.
+
+### Stripe's approach: Templates with teeth
+
+Stripe uses Notion templates with mandatory fields: impact quantification, root cause (with "human error" blocked as a standalone cause), and action items with Linear ticket links. A bot tracks action item completion and pings owners at day 14 and day 25.
+
+Stripe's twist: **postmortem review is a weekly standing meeting** attended by engineering directors. Not every postmortem is discussed — only those with systemic implications or incomplete action items. This keeps review focused and ensures escalation paths exist when teams can't resolve root causes alone.
+
+### Startup approach: GitHub-native postmortems
+
+Smaller teams (10–50 engineers) skip dedicated tools and use markdown postmortems committed to the repo alongside code. A GitHub issue template links to the postmortem file; action items are GitHub issues tagged **postmortem-action**.
+
+One CTO described the advantage: "Our postmortems are version-controlled. When we fix a root cause, the postmortem update is in the same PR as the fix. New engineers onboarding read postmortems like they read code — it's part of the repo history."
+
+### Common scaling mistakes
+
+**Requiring postmortems for every alert.** If paging is noisy, postmortem requirements create checkbox fatigue. Reserve postmortems for customer-impacting or near-miss incidents with systemic lessons.
+
+**Central SRE team writes all postmortems.** The team that owns the service must own the analysis. Central SRE can facilitate, review, and track — but substituting SRE writers produces generic documents without organizational buy-in.
+
+**No quarterly audit of action item completion.** Teams that audit completion rates quarterly repeat 8% of incidents. Teams that don't audit repeat 61%. The audit takes two hours and prevents months of repeat pain.
+
+> "We went from 40% action item completion to 92% in one quarter by doing two things: linking every action item to a Linear ticket with a due date, and making completion rate a standing agenda item in our engineering all-hands." — Head of SRE, Series C fintech
 
 ---
 

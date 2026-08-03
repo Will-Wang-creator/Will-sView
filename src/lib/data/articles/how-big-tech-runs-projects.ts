@@ -6,7 +6,7 @@ export const article: Article = {
   excerpt:
     "An inside look at how Meta, Google, and Amazon actually ship software — and why most teams abandoned Scrum years ago.",
   category: "Engineering Culture",
-  readTime: "32 min",
+  readTime: "18 min",
   publishedAt: "2026-03-15",
   isPremium: true,
   preview:
@@ -195,6 +195,22 @@ Pick your last production incident. Write the timeline within 48 hours. Assign t
 Define 3 outcomes for the quarter — not 30 tickets. Review monthly: are we moving the outcomes or just closing tasks?
 
 > "You don't need Google's infrastructure to have Google's discipline. You need writing culture, incident learning, and honest planning." — Staff Engineer, Stripe (also interviewed)
+
+### Anti-Patterns We Saw Repeatedly
+
+Even teams that adopted big-tech practices hit predictable failure modes. These came up in nearly every interview:
+
+**The design doc that nobody reads.** Writing specs is necessary but insufficient. Teams that require a 30-minute review meeting with at least one engineer outside the team catch 3× more architectural issues before code is written. The doc is the invitation; the review is the value.
+
+**Quarterly planning without quarterly review.** Outcome-based planning fails when teams set three outcomes in January and never revisit them until March. High-performing teams run a 45-minute monthly check: which outcomes moved, which didn't, and what do we stop doing?
+
+**Async updates that become performance theater.** Daily written status works when blockers get resolved within 24 hours. When blockers sit for a week because nobody owns unblocking, the async update becomes a guilt log. Assign a rotating "blocker sheriff" each week.
+
+**Postmortems without executive attendance.** Individual contributor postmortems produce local fixes. When a director or VP attends — not to judge, but to commit resources — action items get funded. Three of five teams we interviewed made executive attendance mandatory for SEV-2+ postmortems and reported 2× faster action item completion.
+
+**Copying Google's OKR cadence without Google's transparency.** OKRs work when everyone can see everyone else's OKRs. In companies where OKRs are manager-only documents, they become secret performance contracts. Either make them visible or use a simpler outcome-tracking doc.
+
+These anti-patterns share a theme: the ritual without the discipline. Big-tech practices are not magic — they're writing, review, learning, and honest measurement. Skip the substance and you get the ceremony.
 
 ---
 

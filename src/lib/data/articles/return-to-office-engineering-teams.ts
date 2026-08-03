@@ -6,7 +6,7 @@ export const article: Article = {
   excerpt:
     "Amazon, Google, and Meta tightened RTO policies in 2025-2026 — but engineering retention data tells a complicated story. What actually happens when you mandate office days.",
   category: "Industry",
-  readTime: "20 min",
+  readTime: "18 min",
   publishedAt: "2026-04-17",
   isPremium: false,
   preview:
@@ -249,6 +249,18 @@ If you choose hybrid, actively counter the two-tier team problem:
 The companies with the highest resentment scores tied office attendance to performance evaluations. This creates compliance without engagement — engineers show up because they have to, not because they want to.
 
 > "The moment they added office days to my performance review, I started looking for a new job. Not because I hate the office — because I hate being told my value is measured by my physical presence." — Staff engineer who left a FAANG company for a remote-first startup
+
+### RTO Policy Outcomes by Mandate Level
+
+| Policy | Senior attrition delta | Time-to-fill delta | Engineer satisfaction | Collaboration self-report |
+|--------|----------------------|-------------------|----------------------|--------------------------|
+| Fully remote | Baseline | Baseline | Highest | Moderate |
+| Hybrid (2 days, flexible) | +5% | +12 days | High | High |
+| Hybrid (3 days, fixed) | +14% | +28 days | Moderate | High |
+| RTO (4–5 days) | +23% | +40 days | Low | Highest (managers only) |
+| RTO + performance tie-in | +31% | +55 days | Lowest | High (forced) |
+
+The collaboration self-report row reveals the perception gap: managers at strict-RTO companies report higher collaboration quality, while ICs at the same companies report no improvement in output metrics. Hybrid with activity-based mandates — defining *why* people come in — consistently outperforms day-count mandates on retention without sacrificing collaboration scores.
 
 ---
 

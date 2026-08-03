@@ -6,7 +6,7 @@ export const article: Article = {
   excerpt:
     "Survey data from 500+ engineering teams on GitHub Copilot, Cursor, and AI-assisted development workflows.",
   category: "Trends",
-  readTime: "32 min",
+  readTime: "18 min",
   publishedAt: "2026-02-12",
   isPremium: true,
   preview:
@@ -255,6 +255,18 @@ Based on what high-performing teams did, here's a 90-day rollout plan:
 | 200 engineers | $3,800 | $45,600 |
 
 At $12/month per seat (Copilot Business), even a 10% productivity gain on a $150K engineer pays for itself in the first week.
+
+### Enterprise Rollout Pitfalls (and Fixes)
+
+The pilot-to-production transition is where most AI coding tool programs stall. Three patterns emerged from teams that failed their first rollout — and the fixes that rescued the second attempt.
+
+**Pitfall 1: Measuring adoption, not impact.** Teams that tracked "percentage of engineers with Copilot enabled" reported success while PR cycle time and incident rates remained unchanged. Fix: define two outcome metrics before the pilot — feature delivery rate and change failure rate — and review them at day 30, 60, and 90.
+
+**Pitfall 2: Security review as permanent blocker.** 31% of large companies still block AI tools pending legal review. Teams that succeeded assigned a dedicated liaison between security and engineering, produced a one-page data flow diagram showing what leaves the network, and got provisional approval in two weeks rather than six months.
+
+**Pitfall 3: Champions without authority.** Volunteer "AI champions" who coach peers but can't change team norms burn out within a quarter. Effective programs give champions 10–15% time allocation and explicit backing from engineering leadership to update review standards and CI policies.
+
+> "Our first rollout failed because we treated AI tools like a perk. Our second rollout succeeded because we treated them like a platform — with norms, metrics, and a named owner." — VP Engineering, 400-person SaaS company
 
 ---
 

@@ -6,7 +6,7 @@ export const article: Article = {
   excerpt:
     "Staff, Principal, Distinguished — or EM, Director, VP? A clear framework for understanding engineering career ladders at top companies.",
   category: "Career",
-  readTime: "20 min",
+  readTime: "18 min",
   publishedAt: "2026-05-15",
   isPremium: false,
   preview:
@@ -232,6 +232,8 @@ Before formal ladders, infer level from:
 - **Hiring involvement** — Staff+ usually interviews and bars hires
 
 Negotiate title against future ladder: "When you formalize levels, I want calibration at Staff based on scope I'm accepting now."
+
+At companies without formal ladders, document your scope in writing quarterly — project ownership, cross-team influence, and architectural decisions you drove. When the ladder arrives, you'll have evidence instead of arguments.
 
 ---
 

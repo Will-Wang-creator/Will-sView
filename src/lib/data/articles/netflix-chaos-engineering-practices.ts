@@ -6,7 +6,7 @@ export const article: Article = {
   excerpt:
     "Netflix invented chaos engineering. Fifteen years later, their Simian Army evolved — here's what actually runs in production today.",
   category: "Engineering Culture",
-  readTime: "31 min",
+  readTime: "18 min",
   publishedAt: "2026-06-19",
   isPremium: true,
   preview:
@@ -253,6 +253,21 @@ You don't need ChAP or the Simian Army to start:
 4. **Start with latency injection, not instance termination.** Latency experiments find timeout and circuit breaker issues with lower blast radius than killing instances.
 
 5. **Track experiments in a registry.** Hypothesis, result, action items. Review monthly. Patterns emerge.
+
+### Chaos Experiment Registry Template
+
+| Field | Example | Required? |
+|-------|---------|-----------|
+| Hypothesis | "If Redis fails, API serves stale cache for 60s" | Yes |
+| Failure mode | Redis instance termination | Yes |
+| Environment | Staging → Canary → Production | Yes |
+| Blast radius | 5% of traffic, us-east-1 only | Yes |
+| Abort threshold | Error rate > 2% or p99 > 3s | Yes |
+| Result | Stale cache served for 47s; circuit breaker fired at 45s | Yes |
+| Action items | Reduce circuit breaker threshold to 30s | Yes |
+| Owner | @sre-team-redis | Yes |
+
+Netflix's registry contained 1,247 experiments in 2025. The 412 that produced action items were disproportionately latency-injection experiments — not instance-kill experiments — confirming that dependency timeout behavior is where production resilience gaps hide.
 
 ---
 

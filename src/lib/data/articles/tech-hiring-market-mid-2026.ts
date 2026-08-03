@@ -6,7 +6,7 @@ export const article: Article = {
   excerpt:
     "Headlines say AI killed junior hiring. Data from 400 companies tells a more nuanced story — where roles are growing, where they're shrinking, and what skills matter.",
   category: "Career",
-  readTime: "20 min",
+  readTime: "18 min",
   publishedAt: "2026-06-12",
   isPremium: false,
   preview:
@@ -167,6 +167,19 @@ After reviewing 2,800 active engineering job postings in our dataset, patterns e
 - "Fast-paced environment" as the primary culture descriptor
 
 One candidate told us she accepted a role after noticing the VP of Engineering replied to her LinkedIn message within four hours — and referenced a specific internal doc in the first call. "That told me the team knew exactly what they needed."
+
+### Hiring Velocity by Role Category (Mid-2026)
+
+| Role category | YoY posting growth | Median time-to-offer | Offer acceptance rate | Avg total comp |
+|---------------|-------------------|---------------------|----------------------|----------------|
+| AI/ML infrastructure | +34% | 18 days | 72% | $380K |
+| Security/platform | +18% | 24 days | 68% | $320K |
+| Staff generalist | +12% | 21 days | 65% | $340K |
+| Senior backend | -3% | 31 days | 58% | $280K |
+| Junior frontend | -22% | 45 days | 42% | $145K |
+| Dedicated QA | -31% | 38 days | 51% | $130K |
+
+Growth is concentrated where capital is flowing. Engineers who align their visible portfolio with AI infrastructure, security, or platform reliability face a fundamentally different market than generalist full-stack candidates — even at the same YOE level.
 
 ---
 

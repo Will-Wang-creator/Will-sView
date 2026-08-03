@@ -6,7 +6,7 @@ export const article: Article = {
   excerpt:
     "How OpenAI organizes 1,500+ engineers across research, product, and infrastructure — and the tension between moving fast and shipping safely.",
   category: "Engineering Culture",
-  readTime: "32 min",
+  readTime: "18 min",
   publishedAt: "2026-05-29",
   isPremium: true,
   preview:
@@ -188,6 +188,17 @@ You won't replicate OpenAI's four-pillar model. You can replicate principles:
 - **Small team mythology** while hiring 100 engineers a quarter
 - **Research-style ambiguity** in product teams with SLA commitments
 - **Safety veto without safety engineering** — executive "no" without automated gates creates bottlenecks, not safety
+
+### OpenAI Org Structure at a Glance
+
+| Pillar | Headcount (est.) | Primary mandate | Key tension |
+|--------|-----------------|---------------|-------------|
+| Research Engineering | ~800 | Frontier model training | Speed vs safety eval gates |
+| Applied AI | ~600 | ChatGPT, API products | Research ambiguity vs SLAs |
+| Platform | ~400 | Inference, tooling, infra | Scale vs researcher autonomy |
+| Superalignment | ~200 | Safety evals, red teaming | Veto power vs ship velocity |
+
+These four pillars are the org chart on paper. In practice, engineers described weekly cross-pillar negotiations — especially when a research breakthrough wants immediate deployment and safety evals need two more weeks of red-team testing. The seam between pillars is where OpenAI's product velocity is won or lost.
 
 ---
 

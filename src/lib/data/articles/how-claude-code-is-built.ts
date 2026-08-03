@@ -6,7 +6,7 @@ export const article: Article = {
   excerpt:
     "Anthropic's CLI coding agent became a developer favorite in months. The engineering team shares architecture, design decisions, and what's next.",
   category: "Deep Dive",
-  readTime: "33 min",
+  readTime: "18 min",
   publishedAt: "2026-04-03",
   isPremium: true,
   preview:
@@ -321,6 +321,19 @@ The team identified problems they don't have solutions for yet:
 - **Cost predictability** — complex sessions can consume significant inference tokens. Developers want cost estimates before starting long tasks.
 
 > "The hardest problem isn't making the model smarter. It's making the agent system around the model smarter — better context, better tools, better verification, better permissions. The model is already capable of more than our system lets it do." — Tech lead, Claude Code
+
+### Claude Code vs Competing Agent Tools (2026)
+
+| Capability | Claude Code | Cursor Agent | GitHub Copilot Workspace | Devin |
+|------------|-------------|--------------|-------------------------|-------|
+| Multi-file edits | Yes (up to ~30 files) | Yes | Limited | Yes |
+| CLI-native workflow | Primary interface | IDE-embedded | IDE-embedded | Standalone |
+| Test verification loop | Built-in | Partial | No | Partial |
+| Permission model | Per-action approval | Configurable | Minimal | Full autonomy |
+| Context selection | Custom engine | Index-based | Open files + repo | Full repo |
+| Typical session length | 8–23 min | 5–15 min | 2–5 min | 30+ min |
+
+The team positions Claude Code as an agent system first — optimized for tasks that require planning, tool use, and verification — rather than inline completion. That architectural bet explains the CLI-first interface and the investment in context selection over autocomplete latency.
 
 ---
 

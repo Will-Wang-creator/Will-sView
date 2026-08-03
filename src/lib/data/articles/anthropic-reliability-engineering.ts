@@ -6,7 +6,7 @@ export const article: Article = {
   excerpt:
     "How Anthropic keeps Claude available at scale — SRE practices, inference routing, and the tradeoffs of running frontier models in production.",
   category: "Deep Dive",
-  readTime: "32 min",
+  readTime: "18 min",
   publishedAt: "2026-07-23",
   isPremium: true,
   preview:
@@ -212,6 +212,19 @@ Document and enforce retry patterns for your API consumers. Consider detecting a
 Partial service beats hard failure. If you can serve a faster/smaller model for non-critical requests during overload, design that path now — not during your first viral moment.
 
 > "The teams that will survive the next wave of AI infrastructure growth aren't the ones with the most GPUs. They're the ones who treat reliability as a product discipline, not an ops afterthought." — Maya Chen, Senior SRE
+
+### Reliability Metrics Anthropic Tracks Internally
+
+| Metric | Target | Alert threshold | Review cadence |
+|--------|--------|-----------------|----------------|
+| Effective Availability (uptime × quality) | 99.95% | < 99.9% for 5 min | Real-time |
+| Time to first token (p95) | < 800ms | > 1.2s for 3 min | Real-time |
+| Token throughput per GPU-hour | Baseline +5% QoQ | -10% from baseline | Daily |
+| Eval regression rate (pre-deploy) | 0 blocking failures | Any safety eval fail | Per deploy |
+| In-flight request loss (failover) | 0% | > 0.05% | Per game day |
+| Retry storm detection (client-side) | < 100/min per API key | > 500/min | Real-time |
+
+These metrics sit alongside traditional HTTP status dashboards. Chen emphasized that Effective Availability — combining uptime with output quality scores from automated eval pipelines — is the number leadership reviews weekly, not raw API availability alone.
 
 ---
 

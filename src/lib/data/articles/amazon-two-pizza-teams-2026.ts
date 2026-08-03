@@ -6,7 +6,7 @@ export const article: Article = {
   excerpt:
     "Amazon's organizational philosophy shaped a generation of tech companies. We asked current and former Amazon engineers whether two-pizza teams still work at scale.",
   category: "Engineering Culture",
-  readTime: "30 min",
+  readTime: "18 min",
   publishedAt: "2026-05-22",
   isPremium: true,
   preview:
@@ -181,6 +181,23 @@ You probably aren't Amazon. You can still apply the durable parts:
 - **Dogmatic 6-person caps** when scope requires 12 with clear sub-ownership
 - **Autonomy as excuse for skipping security/compliance review** — non-negotiable in 2026
 - **Copying Amazon's six-pager length without Amazon's review culture** — format without discipline is waste
+
+### Two-Pizza Team Sizing: What Changed in 2026
+
+| Factor | 2015 (original model) | 2026 (current practice) | Implication |
+|--------|----------------------|------------------------|-------------|
+| Team size | 6–8 engineers | 10–14 engineers | Scope widened, not headcount for its own sake |
+| Service ownership | 1–2 services per team | 3–5 services with platform support | Requires stronger API contracts |
+| ML/AI infrastructure | Built per team | Centralized (Bedrock-style) | Teams consume, don't build |
+| Deploy frequency | Weekly per team | Daily with shared CI/CD | Platform team investment required |
+| Coordination overhead | < 20% of engineer time | Target < 30% | AI output increases integration surface |
+| On-call rotation | 1 week per engineer/month | 1 week per 6–8 engineers | Better tooling, fewer pages |
+
+One VP of Engineering at a Series D company summarized the shift: "We kept the ownership principle and dropped the headcount religion. A team of twelve with clear API boundaries outperforms six teams of six with shared databases."
+
+The table explains why copying Amazon's 2015 org chart in 2026 fails: the original model assumed teams built their own infrastructure, deployed infrequently, and coordinated through written interfaces. Modern AI-augmented teams ship faster into shared platforms — which means boundaries matter more and pizza counts matter less.
+
+If you're adopting two-pizza principles today, start with service ownership and API contracts — not headcount caps. Measure coordination overhead quarterly. When it exceeds 30%, split the team or merge the services, regardless of how many people fit in a conference room.
 
 ---
 
