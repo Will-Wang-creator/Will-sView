@@ -10,7 +10,8 @@
     "articles:sync-index": "node scripts/sync-article-index.mjs",
     "articles:build-locales": "node scripts/build-article-locales.mjs",
     "articles:translate": "node scripts/translate-article-locales.mjs",
-    "articles:weekly": "node scripts/generate-weekly-article.mjs"
+    "articles:weekly": "node scripts/generate-weekly-article.mjs",
+    "admin:set": "node scripts/set-admin-member.mjs"
   },
   "dependencies": {
     "@libsql/client": "^0.17.4",
