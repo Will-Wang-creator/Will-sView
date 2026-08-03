@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect } from "react";
 import { Lock, Calendar, ArrowLeft } from "lucide-react";
+import type { Article } from "@/lib/data/articles";
 import { getArticle } from "@/lib/data/articles";
 import { useTranslation } from "@/components/LanguageProvider";
 import { Paywall } from "@/components/Paywall";
@@ -14,15 +15,19 @@ interface ArticlePageContentProps {
   slug: string;
   canRead: boolean;
   user: { id: string; name: string } | null;
+  /** Server-localized article for first paint (matches locale cookie). */
+  article: Article;
 }
 
 export function ArticlePageContent({
   slug,
   canRead,
   user,
+  article: serverArticle,
 }: ArticlePageContentProps) {
   const { locale, t } = useTranslation();
-  const article = getArticle(slug, locale);
+  const clientArticle = getArticle(slug, locale);
+  const article = clientArticle ?? serverArticle;
 
   useEffect(() => {
     if (!user) return;

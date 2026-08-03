@@ -7,9 +7,11 @@
     "build": "next build",
     "start": "next start",
     "test:site": "node scripts/test-site.mjs",
+    "test:locales": "node scripts/test-locale-sync.mjs",
     "articles:sync-index": "node scripts/sync-article-index.mjs",
     "articles:build-locales": "node scripts/build-article-locales.mjs",
     "articles:translate": "node scripts/translate-article-locales.mjs",
+    "articles:prune-locales": "node scripts/prune-locale-orphans.mjs",
     "articles:weekly": "node scripts/generate-weekly-article.mjs",
     "articles:validate": "node scripts/validate-articles.mjs",
     "admin:set": "node scripts/set-admin-member.mjs"

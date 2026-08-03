@@ -34,6 +34,7 @@ export default async function ArticlePage({ params }: Props) {
       slug={slug}
       canRead={canRead}
       user={user ? { id: user.id, name: user.name } : null}
+      article={article}
     />
   );
 }
