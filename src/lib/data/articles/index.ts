@@ -3,6 +3,7 @@ import type { Locale } from "@/lib/i18n/locales";
 import { defaultLocale } from "@/lib/i18n/locales";
 import { getArticleLocaleContent } from "./locales";
 import { article as developersAreAttachedToToolsBecauseToolsEncodeTrust20260807 } from "./developers-are-attached-to-tools-because-tools-encode-trust-2026-08-07";
+import { article as forwardDeployedEngineersEnterpriseAi20260731 } from "./forward-deployed-engineers-enterprise-ai-2026-07-31";
 import { article as anthropicReliabilityEngineering } from "./anthropic-reliability-engineering";
 import { article as engineeringMetricsThatMatter } from "./engineering-metrics-that-matter";
 import { article as howLinearBuiltDeveloperTool } from "./how-linear-built-developer-tool";
@@ -30,6 +31,7 @@ export type { Article, ArticleLocaleContent } from "./types";
 
 export const articles: Article[] = [
   developersAreAttachedToToolsBecauseToolsEncodeTrust20260807,
+  forwardDeployedEngineersEnterpriseAi20260731,
   anthropicReliabilityEngineering,
   engineeringMetricsThatMatter,
   howLinearBuiltDeveloperTool,
