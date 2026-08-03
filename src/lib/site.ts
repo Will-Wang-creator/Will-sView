@@ -7,7 +7,7 @@ export function formatPrice(amount: number): string {
 }
 
 export const SITE_CONTACT_EMAIL =
-  process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "asd123456w910909@gmail.com";
+  process.env.NEXT_PUBLIC_CONTACT_EMAIL ?? "willsview0725@gmail.com";
 
 export const SOCIAL_LINKS = {
   x: process.env.NEXT_PUBLIC_SOCIAL_X ?? "https://x.com",

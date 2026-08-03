@@ -142,6 +142,7 @@ const en: Translations = {
     copyright: "All rights reserved.",
     privacy: "Privacy",
     terms: "Terms",
+    contactUs: "Contact Us",
   },
   login: {
     welcomeBack: "Welcome back",

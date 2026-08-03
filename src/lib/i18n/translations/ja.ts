@@ -142,6 +142,7 @@ const ja: Translations = {
     copyright: "All rights reserved.",
     privacy: "プライバシー",
     terms: "利用規約",
+    contactUs: "お問い合わせ",
   },
   login: {
     welcomeBack: "おかえりなさい",

@@ -142,6 +142,7 @@ const zhCN: Translations = {
     copyright: "版权所有。",
     privacy: "隐私",
     terms: "条款",
+    contactUs: "联系我们",
   },
   login: {
     welcomeBack: "欢迎回来",

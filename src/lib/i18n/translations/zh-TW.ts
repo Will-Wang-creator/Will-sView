@@ -142,6 +142,7 @@ const zhTW: Translations = {
     copyright: "版權所有。",
     privacy: "隱私權",
     terms: "條款",
+    contactUs: "聯絡我們",
   },
   login: {
     welcomeBack: "歡迎回來",

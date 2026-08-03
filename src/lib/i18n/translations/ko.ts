@@ -142,6 +142,7 @@ const ko: Translations = {
     copyright: "All rights reserved.",
     privacy: "개인정보",
     terms: "이용약관",
+    contactUs: "문의하기",
   },
   login: {
     welcomeBack: "다시 오신 것을 환영합니다",

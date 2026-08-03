@@ -82,6 +82,7 @@ export interface Translations {
     copyright: string;
     privacy: string;
     terms: string;
+    contactUs: string;
   };
   login: {
     welcomeBack: string;
