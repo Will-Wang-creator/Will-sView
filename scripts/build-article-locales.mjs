@@ -27,6 +27,7 @@ function parseArticleFile(filePath) {
     : [];
 
   return {
+    slug,
     title: field("title"),
     excerpt: field("excerpt"),
     category: field("category"),
@@ -46,9 +47,9 @@ function loadEnglishArticles() {
   for (const f of files) {
     const parsed = parseArticleFile(path.join(articlesDir, f));
     if (parsed) {
-      const slug = f.replace(".ts", "");
-      articles[slug] = parsed;
-      if (!parsed.content) {
+      const { slug, ...content } = parsed;
+      articles[slug] = content;
+      if (!content.content) {
         console.warn(`Warning: empty content for ${slug}`);
       }
     }
@@ -61,10 +62,32 @@ const LOCALES = ["ja", "ko", "zh-TW", "zh-CN", "es", "fr", "de", "pt"];
 const english = loadEnglishArticles();
 fs.mkdirSync(localesDir, { recursive: true });
 
+let added = 0;
+let preserved = 0;
+
 for (const locale of LOCALES) {
   const outPath = path.join(localesDir, `${locale}.json`);
-  fs.writeFileSync(outPath, JSON.stringify(english, null, 2), "utf8");
-  console.log(`Wrote ${locale}.json (${Object.keys(english).length} articles)`);
+  const existing = fs.existsSync(outPath)
+    ? JSON.parse(fs.readFileSync(outPath, "utf8"))
+    : {};
+
+  const merged = { ...existing };
+
+  for (const [slug, content] of Object.entries(english)) {
+    if (!merged[slug]) {
+      merged[slug] = content;
+      added++;
+    } else {
+      preserved++;
+    }
+  }
+
+  fs.writeFileSync(outPath, JSON.stringify(merged, null, 2), "utf8");
+  console.log(
+    `Wrote ${locale}.json (${Object.keys(merged).length} articles, preserved existing translations)`
+  );
 }
 
-console.log(`Done: ${Object.keys(english).length} English articles extracted`);
+console.log(
+  `Done: ${Object.keys(english).length} English articles; ${added} new locale entries added across files`
+);
