@@ -19,6 +19,7 @@ import {
   mergeArticleIntoLocales,
   renderArticleFile,
   syncArticleIndex,
+  validateArticleDepth,
 } from "./lib/articles.mjs";
 import {
   buildSlugFromTopic,
@@ -66,6 +67,19 @@ async function main() {
     sources: [topic, ...related],
     dateISO: publishDate,
   });
+
+  const depth = validateArticleDepth(draft.content, { strict: true });
+  console.log(
+    `Draft depth: ${depth.words} words, ${depth.sections} sections, ${depth.quotes} quotes, ${depth.tables} table rows`
+  );
+  if (!depth.ok) {
+    console.warn(`Draft below editorial bar: ${depth.issues.join("; ")}`);
+    if (!process.env.OPENAI_API_KEY) {
+      console.warn(
+        "Set OPENAI_API_KEY (and optionally OPENAI_MODEL=gpt-4o) for Pragmatic Engineer–quality depth."
+      );
+    }
+  }
 
   const slug = buildSlugFromTopic(draft.title || topic.title, publishDate);
   const filePath = path.join(articlesDir, `${slug}.ts`);

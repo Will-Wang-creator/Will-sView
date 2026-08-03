@@ -94,17 +94,20 @@ Set all environment variables in your deployment platform.
 Every **Friday at 09:00 (UTC+8)**, GitHub Actions runs `weekly-article.yml` to:
 
 1. Fetch trending tech/engineering news (Hacker News + Google News)
-2. Generate a long-form analysis article (OpenAI if `OPENAI_API_KEY` is set)
-3. Register the article, sync translations (8 languages), and verify `npm run build`
+2. Generate a long-form analysis article (OpenAI `gpt-4o` if `OPENAI_API_KEY` is set; 2,400+ words, Pragmatic Engineer style)
+3. Validate editorial depth (`npm run articles:validate`), register the article, sync translations (8 languages), and verify `npm run build`
 4. Open a pull request for human review before merge/deploy
 
-**Setup:** Add `OPENAI_API_KEY` as a GitHub repository secret (optional — fallback template used without it).
+**Setup:** Add `OPENAI_API_KEY` as a GitHub repository secret. Optional: `OPENAI_MODEL=gpt-4o` (default when key is set).
+
+**Editorial bar:** 2,200+ words, 6+ numbered sections, tables, blockquotes, playbooks — aligned with [The Pragmatic Engineer](https://newsletter.pragmaticengineer.com/) depth.
 
 **Local commands:**
 
 ```bash
 npm run articles:weekly              # generate from latest news
 npm run articles:weekly -- --dry-run   # preview topic only
+npm run articles:validate            # check all articles meet depth bar
 npm run articles:sync-index            # rebuild index.ts from article files
 npm run articles:translate             # re-translate all locale files
 ```

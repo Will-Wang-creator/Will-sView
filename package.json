@@ -11,6 +11,7 @@
     "articles:build-locales": "node scripts/build-article-locales.mjs",
     "articles:translate": "node scripts/translate-article-locales.mjs",
     "articles:weekly": "node scripts/generate-weekly-article.mjs",
+    "articles:validate": "node scripts/validate-articles.mjs",
     "admin:set": "node scripts/set-admin-member.mjs"
   },
   "dependencies": {

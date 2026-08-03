@@ -115,8 +115,40 @@ export function escapeTsString(value) {
 
 export function estimateReadTime(content) {
   const words = content.split(/\s+/).filter(Boolean).length;
-  const minutes = Math.max(12, Math.min(35, Math.round(words / 220)));
+  const minutes = Math.max(18, Math.min(40, Math.round(words / 200)));
   return `${minutes} min`;
+}
+
+/** Minimum editorial bar aligned with Pragmatic Engineer–style depth. */
+export function validateArticleDepth(content, { strict = false } = {}) {
+  const words = content.split(/\s+/).filter(Boolean).length;
+  const sections = (content.match(/^## /gm) || []).length;
+  const quotes = (content.match(/^> /gm) || []).length;
+  const separatorTables = (content.match(/\n\|[-: |]+\|\n/g) || []).length;
+  const tablePipes = (content.match(/\|/g) || []).length;
+  const hasTable = separatorTables >= 1 || tablePipes >= 6;
+  const hasTodayWeCover = /\*\*Today, we cover:\*\*/.test(content);
+  const hasTakeaways = /^## Takeaways/m.test(content);
+
+  const minWords = strict ? 2200 : 2000;
+  const minSections = strict ? 6 : 5;
+
+  const issues = [];
+  if (words < minWords) issues.push(`word count ${words} < ${minWords}`);
+  if (sections < minSections) issues.push(`sections ${sections} < ${minSections}`);
+  if (quotes < 2) issues.push(`blockquotes ${quotes} < 2`);
+  if (!hasTable) issues.push("missing markdown table");
+  if (!hasTodayWeCover) issues.push('missing "**Today, we cover:**" section');
+  if (!hasTakeaways) issues.push('missing "## Takeaways" section');
+
+  return {
+    words,
+    sections,
+    quotes,
+    tables: hasTable ? 1 : 0,
+    ok: issues.length === 0,
+    issues,
+  };
 }
 
 export function toImportName(slug) {
