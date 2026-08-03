@@ -2,8 +2,8 @@ name: Weekly Article
 
 on:
   schedule:
-    # Every Monday 01:00 UTC (09:00 UTC+8)
-    - cron: "0 1 * * 1"
+    # Every Friday 01:00 UTC (09:00 UTC+8)
+    - cron: "0 1 * * 5"
   workflow_dispatch:
 
 permissions:
@@ -40,12 +40,13 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           branch: weekly-article/${{ github.run_id }}
-          title: "Weekly article (${{ github.run_number }})"
-          commit-message: "Add weekly article from latest tech news"
+          title: "Friday weekly article (${{ github.run_number }})"
+          commit-message: "Add Friday weekly article from latest tech news"
           body: |
-            Automated weekly article generated from latest tech/engineering news.
+            Automated weekly article (every Friday) generated from latest tech/engineering news.
 
-            - Source: Hacker News + Google News RSS
+            - Sources: Hacker News + Google News RSS
+            - Editorial focus: analysis and practical guidance for engineering teams
             - Review title, facts, and tone before merging
             - Merging triggers production deploy
 

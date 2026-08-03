@@ -91,7 +91,7 @@ Set all environment variables in your deployment platform.
 
 ## Weekly Articles
 
-Every **Monday at 09:00 (UTC+8)**, GitHub Actions runs `weekly-article.yml` to:
+Every **Friday at 09:00 (UTC+8)**, GitHub Actions runs `weekly-article.yml` to:
 
 1. Fetch trending tech/engineering news (Hacker News + Google News)
 2. Generate a long-form analysis article (OpenAI if `OPENAI_API_KEY` is set)

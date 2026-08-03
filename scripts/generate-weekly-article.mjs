@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 /**
  * Generate a weekly article from latest tech news.
- * Run every Monday via GitHub Actions or manually:
+ * Run every Friday via GitHub Actions or manually:
  *   node scripts/generate-weekly-article.mjs
  *   node scripts/generate-weekly-article.mjs --force
  *   node scripts/generate-weekly-article.mjs --dry-run
@@ -14,7 +14,7 @@ import {
   articlesDir,
   articleExistsForDate,
   estimateReadTime,
-  getMondayISO,
+  getNextPublishFridayISO,
   loadExistingArticles,
   mergeArticleIntoLocales,
   renderArticleFile,
@@ -35,11 +35,11 @@ const dryRun = args.has("--dry-run");
 const force = args.has("--force");
 
 async function main() {
-  const monday = getMondayISO();
-  console.log(`Weekly article run for ${monday}`);
+  const publishDate = getNextPublishFridayISO();
+  console.log(`Weekly article run for ${publishDate} (Friday)`);
 
-  if (!force && articleExistsForDate(monday)) {
-    console.log(`Article already exists for ${monday}. Use --force to override.`);
+  if (!force && articleExistsForDate(publishDate)) {
+    console.log(`Article already exists for ${publishDate}. Use --force to override.`);
     return;
   }
 
@@ -64,10 +64,10 @@ async function main() {
   const draft = await generateArticleDraft({
     topic,
     sources: [topic, ...related],
-    dateISO: monday,
+    dateISO: publishDate,
   });
 
-  const slug = buildSlugFromTopic(draft.title || topic.title, monday);
+  const slug = buildSlugFromTopic(draft.title || topic.title, publishDate);
   const filePath = path.join(articlesDir, `${slug}.ts`);
 
   if (fs.existsSync(filePath) && !force) {
@@ -81,7 +81,7 @@ async function main() {
     excerpt: draft.excerpt,
     category: draft.category || inferCategory(topic.title),
     readTime: estimateReadTime(draft.content),
-    publishedAt: monday,
+    publishedAt: publishDate,
     isPremium: false,
     preview: draft.preview,
     content: draft.content,

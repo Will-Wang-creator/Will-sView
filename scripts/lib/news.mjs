@@ -39,6 +39,14 @@ const TECH_KEYWORDS = [
   "javascript",
 ];
 
+const SKIP_PATTERNS =
+  /harassment|lawsuit|payout|murder|crime|celebrity|sports|recipe|horoscope|weather|election/i;
+
+function isEngineeringRelevant(title) {
+  if (SKIP_PATTERNS.test(title)) return false;
+  return scoreTitle(title) >= 2;
+}
+
 function scoreTitle(title) {
   const lower = title.toLowerCase();
   let score = 0;
@@ -156,7 +164,7 @@ export async function fetchNewsCandidates() {
       const key = item.title.toLowerCase();
       if (seen.has(key)) return false;
       seen.add(key);
-      return scoreTitle(item.title) > 0;
+      return isEngineeringRelevant(item.title);
     })
     .sort((a, b) => b.score - a.score);
 }

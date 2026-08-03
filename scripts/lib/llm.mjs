@@ -1,5 +1,7 @@
 const STYLE_GUIDE = `Write in the Will'sView / Pragmatic Engineer editorial style:
 - Investigative, practitioner-focused tone for senior engineers and eng leaders
+- Frame the piece around a real problem engineering teams face, then analyze causes and solutions
+- Reference how major tech news outlets and communities are covering the story (HN, Verge, Ars, etc.) without copying
 - Open with a concrete hook (specific company, number, or quote)
 - Include "**Today, we cover:**" bullet list near the top
 - Use 4-6 numbered sections with ## headings

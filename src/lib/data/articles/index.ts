@@ -2,6 +2,7 @@ import type { Article } from "./types";
 import type { Locale } from "@/lib/i18n/locales";
 import { defaultLocale } from "@/lib/i18n/locales";
 import { getArticleLocaleContent } from "./locales";
+import { article as developersAreAttachedToToolsBecauseToolsEncodeTrust20260807 } from "./developers-are-attached-to-tools-because-tools-encode-trust-2026-08-07";
 import { article as anthropicReliabilityEngineering } from "./anthropic-reliability-engineering";
 import { article as engineeringMetricsThatMatter } from "./engineering-metrics-that-matter";
 import { article as howLinearBuiltDeveloperTool } from "./how-linear-built-developer-tool";
@@ -28,6 +29,7 @@ import { article as aiCodingToolsAdoption } from "./ai-coding-tools-adoption";
 export type { Article, ArticleLocaleContent } from "./types";
 
 export const articles: Article[] = [
+  developersAreAttachedToToolsBecauseToolsEncodeTrust20260807,
   anthropicReliabilityEngineering,
   engineeringMetricsThatMatter,
   howLinearBuiltDeveloperTool,

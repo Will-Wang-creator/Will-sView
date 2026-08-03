@@ -18,6 +18,38 @@ export function slugify(text) {
     .replace(/-$/, "");
 }
 
+export function getFridayISO(date = new Date()) {
+  const d = new Date(date);
+  const day = d.getDay();
+  const diff = day <= 5 ? 5 - day : 5 - day + 7;
+  d.setDate(d.getDate() + diff);
+  return d.toISOString().slice(0, 10);
+}
+
+/** Next Friday on or after today, strictly after the latest published article. */
+export function getNextPublishFridayISO(date = new Date()) {
+  const articles = loadExistingArticles();
+  const latest = articles.reduce(
+    (max, a) => (a.publishedAt > max ? a.publishedAt : max),
+    "1970-01-01"
+  );
+
+  let d = new Date(latest);
+  d.setDate(d.getDate() + 1);
+  while (d.getDay() !== 5) {
+    d.setDate(d.getDate() + 1);
+  }
+
+  const today = new Date(date);
+  today.setHours(0, 0, 0, 0);
+
+  while (d < today) {
+    d.setDate(d.getDate() + 7);
+  }
+
+  return d.toISOString().slice(0, 10);
+}
+
 export function getMondayISO(date = new Date()) {
   const d = new Date(date);
   const day = d.getDay();
